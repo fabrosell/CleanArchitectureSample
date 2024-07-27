@@ -1,4 +1,5 @@
 using CleanArchitecture.Infra.Data.Context;
+using CleanArchitecture.Infrastructure.IoC;
 using CleanArchitecture.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDbContext<LibraryDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection")));
+
+// CleanArchitecture services
+builder.Services.RegisterServices();
 
 var app = builder.Build();
 
